@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#4a6fa5" />
+  
+  <!-- Camera lens/aperture -->
+  <circle cx="32" cy="32" r="16" fill="#2d4163" stroke="#ffffff" stroke-width="2" />
+  <circle cx="32" cy="32" r="8" fill="#1a2536" />
+  <circle cx="32" cy="32" r="4" fill="#ffffff" />
+  
+  <!-- AI circuit pattern -->
+  <path d="M32 2 L32 10" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+  <path d="M32 54 L32 62" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+  <path d="M2 32 L10 32" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+  <path d="M54 32 L62 32" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- Circuit nodes -->
+  <circle cx="16" cy="16" r="2" fill="#ffffff" />
+  <circle cx="48" cy="16" r="2" fill="#ffffff" />
+  <circle cx="16" cy="48" r="2" fill="#ffffff" />
+  <circle cx="48" cy="48" r="2" fill="#ffffff" />
+  
+  <!-- Connecting lines -->
+  <path d="M16 16 L25 25" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M48 16 L39 25" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M16 48 L25 39" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M48 48 L39 39" stroke="#ffffff" stroke-width="1.5" />
+</svg>

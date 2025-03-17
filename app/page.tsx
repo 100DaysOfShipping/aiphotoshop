@@ -6,6 +6,7 @@ import { Wand2, Sparkles, Download, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { HistoryItem } from "@/lib/types";
+import Head from 'next/head';
 
 export default function Home() {
   const [image, setImage] = useState<string | null>(null);
@@ -112,161 +113,181 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4 md:p-8">
-      <div className="w-full max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold flex items-center justify-center gap-2 mb-2">
-            <Wand2 className="h-8 w-8 text-primary" />
-            AI Photo Editor
-          </h1>
-          <p className="text-muted-foreground">Transform your images with simple text commands</p>
-        </div>
-
-        {/* Error message */}
-        {error && (
-          <div className="p-4 mb-6 text-sm text-red-700 bg-red-100 rounded-lg">
-            {error}
+    <>
+      <Head>
+        <title>AI Photo Editor | Transform Images with AI | aiphotoshop.in</title>
+        <meta name="description" content="Transform your images with simple text commands using our AI photo editor. Create stunning edits, effects, and transformations instantly." />
+        <meta name="keywords" content="AI photo editor, image editing, AI art, photo transformation, artificial intelligence, image generator" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://aiphotoshop.in" />
+        <meta property="og:title" content="AI Photo Editor | Transform Images with AI | aiphotoshop.in" />
+        <meta property="og:description" content="Transform your images with simple text commands using our AI photo editor. Create stunning edits, effects, and transformations instantly." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aiphotoshop.in" />
+        <meta property="og:image" content="https://aiphotoshop.in/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI Photo Editor | aiphotoshop.in" />
+        <meta name="twitter:description" content="Transform your images with simple text commands using AI" />
+        <meta name="twitter:image" content="https://aiphotoshop.in/og-image.jpg" />
+      </Head>
+      
+      <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4 md:p-8">
+        <div className="w-full max-w-6xl">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold flex items-center justify-center gap-2 mb-2">
+              <Wand2 className="h-8 w-8 text-primary" />
+              AI Photo Editor
+            </h1>
+            <p className="text-muted-foreground">Transform your images with simple text commands</p>
           </div>
-        )}
 
-        {/* Edit controls - Centered layout with textarea left and buttons right */}
-        <div className="max-w-4xl mx-auto w-full">
-          <div className="space-y-2">
-            <label htmlFor="prompt" className="text-sm font-medium text-left block">
-              Edit Command
-            </label>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
-              <Textarea
-                id="prompt"
-                placeholder="Describe how you want to edit the image..."
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                className="resize-none h-[60px] w-full md:w-[48%]"
-                disabled={loading}
-              />
-              <div className="flex space-x-2 justify-center md:justify-end">
-                <Button 
-                  onClick={handlePromptSubmit} 
-                  disabled={!prompt.trim() || loading}
-                  className="h-[60px] px-4 bg-primary/90 hover:bg-primary"
-                  size="lg"
-                >
-                  {loading ? (
-                    <>
-                      <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-background border-t-transparent"></div>
-                      Processing...
-                    </>
-                  ) : generatedImage ? (
-                    <>
-                      <Sparkles className="mr-2 h-4 w-4" />
-                      Keep Editing
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="mr-2 h-4 w-4" />
-                      Edit Image
-                    </>
-                  )}
-                </Button>
-                
-                <Button
-                  onClick={handleReset}
-                  disabled={!generatedImage || loading}
-                  className="h-[60px] px-4 border border-gray-300"
-                  variant="outline"
-                  size="lg"
-                >
-                  <RotateCcw className="mr-2 h-4 w-4" />
-                  Reset
-                </Button>
-                
-                <Button
-                  onClick={handleDownload}
-                  disabled={!generatedImage || loading}
-                  className="h-[60px] px-4 border border-gray-300"
-                  variant="secondary"
-                  size="lg"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download
-                </Button>
+          {/* Error message */}
+          {error && (
+            <div className="p-4 mb-6 text-sm text-red-700 bg-red-100 rounded-lg">
+              {error}
+            </div>
+          )}
+
+          {/* Edit controls - Centered layout with textarea left and buttons right */}
+          <div className="max-w-4xl mx-auto w-full">
+            <div className="space-y-2">
+              <label htmlFor="prompt" className="text-sm font-medium text-left block">
+                Edit Command
+              </label>
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
+                <Textarea
+                  id="prompt"
+                  placeholder="Describe how you want to edit the image..."
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                  className="resize-none h-[60px] w-full md:w-[48%]"
+                  disabled={loading}
+                />
+                <div className="flex space-x-2 justify-center md:justify-end">
+                  <Button 
+                    onClick={handlePromptSubmit} 
+                    disabled={!prompt.trim() || loading}
+                    className="h-[60px] px-4 bg-primary/90 hover:bg-primary"
+                    size="lg"
+                  >
+                    {loading ? (
+                      <>
+                        <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-background border-t-transparent"></div>
+                        Processing...
+                      </>
+                    ) : generatedImage ? (
+                      <>
+                        <Sparkles className="mr-2 h-4 w-4" />
+                        Keep Editing
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="mr-2 h-4 w-4" />
+                        Edit Image
+                      </>
+                    )}
+                  </Button>
+                  
+                  <Button
+                    onClick={handleReset}
+                    disabled={!generatedImage || loading}
+                    className="h-[60px] px-4 border border-gray-300"
+                    variant="outline"
+                    size="lg"
+                  >
+                    <RotateCcw className="mr-2 h-4 w-4" />
+                    Reset
+                  </Button>
+                  
+                  <Button
+                    onClick={handleDownload}
+                    disabled={!generatedImage || loading}
+                    className="h-[60px] px-4 border border-gray-300"
+                    variant="secondary"
+                    size="lg"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Spacer */}
+          <div className="h-10"></div>
+
+          {/* Main content */}
+          <div className="flex flex-col space-y-8">
+            {/* Images section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Left side - Original image */}
+              <div className="flex flex-col space-y-4">
+                {!image ? (
+                  <ImageUpload onImageSelect={handleImageSelect} />
+                ) : (
+                  <div className="relative rounded-lg overflow-hidden bg-muted/30 border aspect-square flex items-center justify-center">
+                    <img 
+                      src={image} 
+                      alt="Original" 
+                      className="max-w-full max-h-full object-contain" 
+                    />
+                    <button 
+                      onClick={() => setImage(null)} 
+                      className="absolute top-2 right-2 p-1 bg-background/80 rounded-full hover:bg-background"
+                    >
+                      <RotateCcw className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
+                <h2 className="text-xl font-medium">Original Image</h2>
+              </div>
+
+              {/* Right side - Edited image */}
+              <div className="flex flex-col space-y-4">
+                {loading ? (
+                  <div className="relative rounded-lg overflow-hidden bg-muted/30 border aspect-square flex flex-col items-center justify-center">
+                    <div className="relative w-16 h-16 mb-4">
+                      <div className="absolute top-0 left-0 w-full h-full border-4 border-primary/30 rounded-full"></div>
+                      <div className="absolute top-0 left-0 w-full h-full border-4 border-transparent border-t-primary rounded-full animate-spin"></div>
+                    </div>
+                    <p className="text-muted-foreground">Transforming your image...</p>
+                  </div>
+                ) : generatedImage ? (
+                  <div className="relative rounded-lg overflow-hidden bg-muted/30 border aspect-square flex items-center justify-center">
+                    <img 
+                      src={generatedImage} 
+                      alt="Edited" 
+                      className="max-w-full max-h-full object-contain" 
+                    />
+                  </div>
+                ) : image ? (
+                  <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
+                    <Sparkles className="h-8 w-8 mb-2 opacity-50" />
+                    <p>Your edited image will appear here</p>
+                    <p className="text-sm">Enter a command and click - Edit Image</p>
+                  </div>
+                ) : (
+                  <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
+                    <Sparkles className="h-8 w-8 mb-2 opacity-50" />
+                    <p>Upload an image to get started</p>
+                  </div>
+                )}
+
+                {description && generatedImage && (
+                  <div className="p-4 bg-muted/30 rounded-lg">
+                    <h3 className="text-sm font-medium mb-1">AI Description</h3>
+                    <p className="text-sm text-muted-foreground">{description}</p>
+                  </div>
+                )}
+                <h2 className="text-xl font-medium">Edited Image</h2>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Spacer */}
-        <div className="h-10"></div>
-
-        {/* Main content */}
-        <div className="flex flex-col space-y-8">
-          {/* Images section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left side - Original image */}
-            <div className="flex flex-col space-y-4">
-              {!image ? (
-                <ImageUpload onImageSelect={handleImageSelect} />
-              ) : (
-                <div className="relative rounded-lg overflow-hidden bg-muted/30 border aspect-square flex items-center justify-center">
-                  <img 
-                    src={image} 
-                    alt="Original" 
-                    className="max-w-full max-h-full object-contain" 
-                  />
-                  <button 
-                    onClick={() => setImage(null)} 
-                    className="absolute top-2 right-2 p-1 bg-background/80 rounded-full hover:bg-background"
-                  >
-                    <RotateCcw className="h-4 w-4" />
-                  </button>
-                </div>
-              )}
-              <h2 className="text-xl font-medium">Original Image</h2>
-            </div>
-
-            {/* Right side - Edited image */}
-            <div className="flex flex-col space-y-4">
-              {loading ? (
-                <div className="relative rounded-lg overflow-hidden bg-muted/30 border aspect-square flex flex-col items-center justify-center">
-                  <div className="relative w-16 h-16 mb-4">
-                    <div className="absolute top-0 left-0 w-full h-full border-4 border-primary/30 rounded-full"></div>
-                    <div className="absolute top-0 left-0 w-full h-full border-4 border-transparent border-t-primary rounded-full animate-spin"></div>
-                  </div>
-                  <p className="text-muted-foreground">Transforming your image...</p>
-                </div>
-              ) : generatedImage ? (
-                <div className="relative rounded-lg overflow-hidden bg-muted/30 border aspect-square flex items-center justify-center">
-                  <img 
-                    src={generatedImage} 
-                    alt="Edited" 
-                    className="max-w-full max-h-full object-contain" 
-                  />
-                </div>
-              ) : image ? (
-                <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
-                  <Sparkles className="h-8 w-8 mb-2 opacity-50" />
-                  <p>Your edited image will appear here</p>
-                  <p className="text-sm">Enter a command and click - Edit Image</p>
-                </div>
-              ) : (
-                <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
-                  <Sparkles className="h-8 w-8 mb-2 opacity-50" />
-                  <p>Upload an image to get started</p>
-                </div>
-              )}
-
-              {description && generatedImage && (
-                <div className="p-4 bg-muted/30 rounded-lg">
-                  <h3 className="text-sm font-medium mb-1">AI Description</h3>
-                  <p className="text-sm text-muted-foreground">{description}</p>
-                </div>
-              )}
-              <h2 className="text-xl font-medium">Edited Image</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
