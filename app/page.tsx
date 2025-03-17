@@ -247,7 +247,7 @@ export default function Home() {
                 <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
                   <Sparkles className="h-8 w-8 mb-2 opacity-50" />
                   <p>Your edited image will appear here</p>
-                  <p className="text-sm">Enter a command and click "Edit Image"</p>
+                  <p className="text-sm">Enter a command and click - Edit Image</p>
                 </div>
               ) : (
                 <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
