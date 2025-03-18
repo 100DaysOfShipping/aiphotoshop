@@ -42,14 +42,8 @@ export default function CombinePage() {
         {
           role: "user",
           parts: [
-            { text: "Here's another image I want to combine" },
+            { text: "" },
             { image: imageB }
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            { text: "I've received your second image. What would you like to do with these images?" }
           ],
         }
       ];
