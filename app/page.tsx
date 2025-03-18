@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { ImageUpload } from "@/components/ImageUpload";
-import { Wand2, Sparkles, Download, RotateCcw } from "lucide-react";
+import { Wand2, Sparkles, Download, RotateCcw, MagnetIcon, Eraser } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { HistoryItem } from "@/lib/types";
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
   const [image, setImage] = useState<string | null>(null);
@@ -133,6 +134,24 @@ export default function Home() {
       </Head>
       
       <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted/30 p-4 md:p-8">
+        {/* Floating navigation buttons */}
+        <div className="fixed top-4 right-4 z-10 flex flex-col sm:flex-row gap-2">
+          <Link href="/combine">
+            <Button variant="outline" className="group border border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-primary/5">
+              <MagnetIcon className="h-4 w-4 mr-2 text-primary group-hover:text-primary" />
+              <span className="hidden sm:inline">AI Image Combiner</span>
+              <span className="sm:hidden">Combiner</span>
+            </Button>
+          </Link>
+          <Link href="/watermark-remover">
+            <Button variant="outline" className="group border border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-primary/5">
+              <Eraser className="h-4 w-4 mr-2 text-primary group-hover:text-primary" />
+              <span className="hidden sm:inline">Watermark Remover</span>
+              <span className="sm:hidden">Remover</span>
+            </Button>
+          </Link>
+        </div>
+
         <div className="w-full max-w-6xl">
           {/* Header */}
           <div className="text-center mb-8">
