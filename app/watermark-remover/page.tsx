@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { ImageUpload } from "@/components/ImageUpload";
-import { Wand2, Sparkles, Download, RotateCcw, Eraser } from "lucide-react";
+import { Download, RotateCcw, Eraser } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HistoryItem } from "@/lib/types";
 import Head from 'next/head';
 import Link from 'next/link';
 import { Home } from 'lucide-react';
