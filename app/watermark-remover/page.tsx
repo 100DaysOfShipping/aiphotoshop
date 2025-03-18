@@ -213,7 +213,7 @@ export default function WatermarkRemoverPage() {
                 <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
                   <Eraser className="h-8 w-8 mb-2 opacity-50" />
                   <p>Cleaned image will appear here</p>
-                  <p className="text-sm">Click "Remove Watermark" to process</p>
+                  <p className="text-sm">Click -Remove Watermark- to process</p>
                 </div>
               ) : (
                 <div className="rounded-lg overflow-hidden bg-muted/10 border border-dashed aspect-square flex flex-col items-center justify-center text-muted-foreground">
